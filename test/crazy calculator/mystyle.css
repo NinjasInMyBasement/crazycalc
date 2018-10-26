@@ -1,0 +1,37 @@
+﻿TD.button {
+	background-image:url('images/unpress.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	
+	width:50px;
+	height:50px;
+	
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size:15px;
+	vertical-align:middle;
+	text-align:center;
+	font-weight:bold;
+	color:white;
+	
+	user-select:none;
+	
+	
+}
+#display {
+	height:32px;
+	font-family:"Arial Narrow Bold", sans-serif;
+	font-size:28px;
+	color:black;
+	text-align:right;
+	vertical-align:middle;
+	background-color:green
+	
+}
+table {
+	background-color:gray;
+}
+#SECRET {
+	width:12px;
+	height:12px;
+	vertical-align:bottom;
+}

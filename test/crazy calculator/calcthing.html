@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<title>Crazy calculator</title>
+<script type="text/javascript">
+	var num1 = 0;
+	var num2 = 0;
+	var operator;
+	function clearMemory(){
+	num1 = null;
+	num2 = null;
+	operator = null;
+	}
+	function clearBut(){
+		clearMemory();
+		clearDisplay();
+	}
+	function setOperator(tag){
+		num1 = parseFloat(document.getElementById("display").innerText);
+		clearDisplay();
+		operator = tag.innerText;
+		console.log(operator);
+	}
+	function calculateNow(){
+		var result = 0;
+		num2 = parseFloat(document.getElementById("display").innerText);
+		console.log("N1:"+num1+" N2:"+num2+" OP:"+operator);
+		if(Number.isNaN(num1)){
+			num1 = 0;
+		}
+		if(operator == "+"){
+			result = num1+num2;
+		}
+		if(operator == "-"){
+			result = num1-num2;
+		}
+		if(operator == "*"){
+			result = num1*num2;
+		}
+		if(operator == "/"){
+			result = num1/num2;
+		}
+		document.getElementById("display").innerText = result;
+		var audio= new Audio('sounds/whale.mp3');
+		audio.play();
+		clearMemory();
+
+	}
+	function reverse(){
+		var display = document.getElementById("display");
+	
+	}
+	function secret(){
+		var x = prompt("What is your name?");
+		var y = prompt("Are you looking in the code to find the answers?");
+		if(x.toUpperCase() === 'CONNER' && y.toUpperCase() === 'NO'){
+			alert("You have found my secret! congratz! I will hide more in later projects.");	
+		}
+		else{
+			alert("You dont belong here... BEGONE.");
+			self.close();
+					
+		}	
+	}
+	function showButDown(tag){
+		tag.style.backgroundImage = "url(images/press.png)";
+	}
+	function showButUp(tag){
+		tag.style.backgroundImage = "url(images/unpress.png)";
+	}
+	function displayDigit(tag){
+		var digit = tag.innerText;
+		var display = document.getElementById("display");
+		var current = display.innerText;
+		display.innerText = current + digit;
+	}
+	function clearDisplay(){
+		document.getElementById("display").innerText = "";
+	}
+
+
+</script>
+</head>
+
+<body>
+	<table border="1">
+		<tr>
+			<th colspan="4" id="display"></th>
+		</tr>
+		<tr>
+			<td class="button" onclick="clearBut()"onmousedown="showButDown(this)" onmouseup="showButUp(this)">C</td>
+		</tr>
+		<tr>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">7</td>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">8</td>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">9</td>
+			<td class="button" onclick="setOperator(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">+</td>
+		</tr>
+		<tr>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">4</td>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">5</td>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">6</td>
+			<td class="button" onclick="setOperator(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">-</td>
+		</tr>
+		<tr>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">1</td>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">2</td>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">3</td>
+			<td class="button" onclick="setOperator(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">*</td>
+		</tr>
+		<tr>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">0</td>
+			<td class="button" onclick="displayDigit(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">.</td>
+			<td class="button" onclick ="calculateNow()"onmousedown="showButDown(this)" onmouseup="showButUp(this)">=</td>
+			<td class="button" onclick="setOperator(this)"onmousedown="showButDown(this)" onmouseup="showButUp(this)">/</td>
+		</tr>
+
+
+
+	</table>
+	<div id="SECRET" onclick="secret()">
+	</div>
+</body>
+
+</html>
